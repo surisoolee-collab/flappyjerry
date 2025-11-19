@@ -4,8 +4,8 @@
 """Flappy, game inspired by Flappy Bird.
 """
 
-from random import * #GF: imports all functions, classes, or variables from the random module
-from turtle import * #GF: imports all turtle functions used to draw graphics on the screen. Such as movement/positioning and shapes
+from random import * #GF: Imports all functions, classes, or variables from the random module
+from turtle import * #GF: Imports all turtle functions used to draw graphics on the screen. Such as movement/positioning and shapes
 
 from freegames import vector #SYL: Imports vector from the module freegames, to run the game freegames must be installed
 
@@ -19,14 +19,14 @@ def tap(x, y):
     bird.move(up)
 
 
-def inside(point): #GF:
+def inside(point): #GF: Defines the function "inside" that checks if a point is within the screen boundaries.
     """Return True if point on screen."""
-    return -200 < point.x < 200 and -200 < point.y < 200
+    return -200 < point.x < 200 and -200 < point.y < 200 #GF: If True, the point's x and y coordinates are within the screen boundaries (between -200 and 200).
 
 
-def draw(alive): #GF:
+def draw(alive): #GF: This function is responsible for rendering the game objects on the screen.
     """Draw screen objects."""
-    clear()
+    clear() #GF: This function clears the screen to prepare for new drawings.
 
     goto(bird.x, bird.y)
 
