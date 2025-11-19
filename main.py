@@ -7,9 +7,9 @@
 from random import *
 from turtle import *
 
-from freegames import vector
+from freegames import vector #SYL: Imports vector from the module freegames, to run the game freegames must be installed
 
-bird = vector(0, 0)
+bird = vector(0, 0) #SYL: Initializes bird position at the center of the screen at position (0,0)
 balls = []
 
 
