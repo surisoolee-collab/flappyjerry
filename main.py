@@ -10,7 +10,7 @@ from turtle import * # GF: imports all turtle functions used to draw graphics on
 from freegames import vector #SYL: Imports vector from the module freegames, to run the game freegames must be installed
 
 bird = vector(0, 0) #SYL: Initializes bird position at the center of the screen at position (0,0)
-balls = []
+balls = [] #GU: creates an empty list that will later store obstacles (balls) 
 
 
 def tap(x, y):
