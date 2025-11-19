@@ -1,5 +1,6 @@
 # SYL: Soo Young Lee
 # GF: Gabriella Ferry
+# GU: Gulyar Udun
 """Flappy, game inspired by Flappy Bird.
 """
 
