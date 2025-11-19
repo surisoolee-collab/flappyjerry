@@ -9,8 +9,8 @@ from turtle import *
 
 from freegames import vector
 
-bird = vector(0, 0)
-balls = []
+bird = vector(0, 0) #GU: represents the position of the bird in the beginning 
+balls = [] #GU: creates an empty list that will later store obstacles (balls) 
 
 
 def tap(x, y):
