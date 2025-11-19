@@ -4,8 +4,8 @@
 """Flappy, game inspired by Flappy Bird.
 """
 
-from random import * # GF: imports all functions, classes, or variables from the random module
-from turtle import * # GF: imports all turtle functions used to draw graphics on the screen. Such as movement/positioning and shapes
+from random import * #GF: imports all functions, classes, or variables from the random module
+from turtle import * #GF: imports all turtle functions used to draw graphics on the screen. Such as movement/positioning and shapes
 
 from freegames import vector #SYL: Imports vector from the module freegames, to run the game freegames must be installed
 
@@ -14,17 +14,17 @@ balls = [] #GU: creates an empty list that will later store obstacles (balls)
 
 
 def tap(x, y):
-    """Move bird up in response to screen tap."""
+    """Move bird up in response to screen tap.""" #GU:
     up = vector(0, 30)
     bird.move(up)
 
 
-def inside(point):
+def inside(point): #GF:
     """Return True if point on screen."""
     return -200 < point.x < 200 and -200 < point.y < 200
 
 
-def draw(alive):
+def draw(alive): #GF:
     """Draw screen objects."""
     clear()
 
@@ -42,7 +42,7 @@ def draw(alive):
     update()
 
 
-def move():
+def move(): #SYL:
     """Update object positions."""
     bird.y -= 5
 
@@ -57,7 +57,7 @@ def move():
     while len(balls) > 0 and not inside(balls[0]):
         balls.pop(0)
 
-    if not inside(bird):
+    if not inside(bird): #GU:
         draw(False)
         return
 
@@ -70,7 +70,7 @@ def move():
     ontimer(move, 50)
 
 
-setup(420, 420, 370, 0)
+setup(420, 420, 370, 0) #SYL:
 hideturtle()
 up()
 tracer(False)
