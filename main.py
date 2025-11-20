@@ -28,14 +28,14 @@ def draw(alive): #GF: This function is responsible for rendering the game object
     """Draw screen objects."""
     clear() #GF: This function clears the screen to prepare for new drawings.
 
-    goto(bird.x, bird.y)
+    goto(bird.x, bird.y) #GF: Moves the turtle to the bird's current position.
 
-    if alive:
+    if alive: #GF: If the bird is alive, it draws a green dot. Otherwise, it draws a red dot.
         dot(10, 'green')
     else:
         dot(10, 'red')
 
-    for ball in balls:
+    for ball in balls: #GF: Draws each ball (obstacle) on the screen as a black dot that is 20 pixels wide.
         goto(ball.x, ball.y)
         dot(20, 'black')
 
