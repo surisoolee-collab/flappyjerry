@@ -5,19 +5,31 @@
 """
 
 import pygame # imports the pygame module for game development
-from sys import * # imports all functions and variables from the sys module
+pygame.init() # initializes all imported pygame modules
+from sys import exit # imports th exit function from the sys module
 from random import * # Imports all functions, classes, or variables from the random module
-import font # imports font module for text rendering
+
+screen = pygame.display.set_mode((420, 420)) # set up display window of size 420x420 pixels
+pygame.display.set_caption("Flappy Jerry") # sets the window title to "Flappy Jerry"
+
+clock = pygame.time.Clock() # creates a Clock object to help track time
+
+#Import images
+jerry_alive = pygame.image.load("jerry_alive.png").convert_alpha
+jerry_dead = pygame.image.load("jerry_dead.png").convert_alpha
+tom_cat = pygame.image.load("tom_cat.png").convert_alpha
+mousetrap = pygame.image.load("mousetrap.png").convert_alpha
+
+#Initialize jerry position
+jerry_position = jerry_alive.get_rect(center = (50, 210)) # sets the initial position of Jerry
+
+mousetrap_obstacle = [] #empty list that will later store the obstacles
 
 
-bird = vector(0, 0) #SYL: Initializes bird position at the center of the screen at position (0,0)
-balls = [] #GU: creates an empty list that will later store the obstacles (balls) 
-
-
-def tap(x, y): #GU: Defines the function "tap" which is called anytime the player taps the screen, x and y are the position.
-    """Move bird up in response to screen tap.""" 
-    up = vector(0, 30) #GU: For each tap on the screen the bird will move 30 units up and 0 units horizontally.
-    bird.move(up) #GU: Tells the bird to move 30 units up per each tap
+def tap(x, y):
+    """Move bird up in response to screen tap.""" #GU: 
+    up = vector(0, 30)
+    jerry_alive.move(up)
 
 
 def inside(point): #GF: Defines the function "inside" that checks if a point is within the screen boundaries.
@@ -68,15 +80,6 @@ def move(): #SYL: defines main game loop. Updates positions of bird and balls, c
 
     draw(True) #GU: If distance is more than 15 units then it tells the game that the bird has not collided into anything
     ontimer(move, 50) #GU: When the bird is safe the game will continue by updating the game screen every 50 milliseconds(creates the illusion that the bird is moving horizontally.)
-
-import pygame, sys  #GF: imports pygame and sys (pygame is used for creating games and multimedia applications, sys provides access to system-specific parameters and functions, such as exiting the program)
-import font #GF: imports font module for text rendering
-
-pygame.init() #GF: Initializes all imported pygame modules
-
-screen = pygame.display.set_mode((420, 420)) #GF: Sets the display mode to a window of size 420x420 pixels
-pygame.display.set_caption("Flappy Jerry") #GF: Sets the title of the window to "Flappy Jerry"
-
 
 
 setup(420, 420, 370, 0) #SYL: creates a 420 by 420 pixel window, at 370 pixels left and 0 pixels from the top of the screen
