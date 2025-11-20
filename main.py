@@ -15,21 +15,37 @@ pygame.display.set_caption("Flappy Jerry") # sets the window title to "Flappy Je
 clock = pygame.time.Clock() # creates a Clock object to help track time
 
 #Import images
-jerry_alive = pygame.image.load("jerry_alive.png").convert_alpha
-jerry_dead = pygame.image.load("jerry_dead.png").convert_alpha
-tom_cat = pygame.image.load("tom_cat.png").convert_alpha
+jerry = pygame.image.load("jerry.png").convert_alpha
+deadjerry = pygame.image.load("deadjerry.png").convert_alpha
+cat = pygame.image.load("cat.png").convert_alpha
 mousetrap = pygame.image.load("mousetrap.png").convert_alpha
+cheese = pygame.image.load("cheese.png").convert_alpha
+background = pygame.image.load("background.png").convert_alpha
 
 #Initialize jerry position
-jerry_position = jerry_alive.get_rect(center = (50, 210)) # sets the initial position of Jerry
+jerry_x = 210
+jerry_y = 210
+jerry_position = jerry_alive.get_rect(center = (jerry_x, jerry_y)) # sets the initial position of Jerry
 
 mousetrap_obstacle = [] #empty list that will later store the obstacles
 
 
-def tap(x, y):
-    """Move bird up in response to screen tap.""" #GU: 
-    up = vector(0, 30)
-    jerry_alive.move(up)
+def spacebar():
+    jerry_y -= 30 # moves Jerry up by 30 pixels
+    """Move bird up in response to clicking spacebar."""
+
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+        if event.type == pygame.KEYDOWN:
+    key = pygame.key.get_pressed() # checks if the spacebar key is pressed
+        if key[pygame.K_SPACE]:
+            spacebar() # calls the spacebar function to move Jerry up
+        else:
+            
 
 
 def inside(point): #GF: Defines the function "inside" that checks if a point is within the screen boundaries.
@@ -83,6 +99,6 @@ def move(): #SYL: defines main game loop. Updates positions of bird and balls, c
 
 
 
-onscreenclick(tap) #SYL: calls the tap function whenever the screen is clicked
+onscreenclick(spacebar) #SYL: calls the spacebar function whenever the screen is clicked
 move() #SYL: starts the game by calling the move function
 done() #SYL: when the program is finished waits for the user to close the window
