@@ -5,21 +5,31 @@
 """
 
 import pygame # imports the pygame module for game development
+pygame.init() # initializes all imported pygame modules
 from sys import exit # imports th exit function from the sys module
 from random import * # Imports all functions, classes, or variables from the random module
 
+screen = pygame.display.set_mode((420, 420)) # set up display window of size 420x420 pixels
 pygame.display.set_caption("Flappy Jerry") # sets the window title to "Flappy Jerry"
-jerry_alive = pygame.image.load("jerry_alive.png").convert_alpha # loads the image of Jerry when he is alive
-jerry_dead = pygame.image.load("jerry_dead.png").convert_alpha # loads the image of Jerry when he is dead
 
-jerry_alive = vector(0, 0) #SYL: Initializes bird position at the center of the screen at position (0,0)
-balls = [] #GU: creates an empty list that will later store the obstacles (balls) 
+clock = pygame.time.Clock() # creates a Clock object to help track time
+
+#Import images
+jerry_alive = pygame.image.load("jerry_alive.png").convert_alpha
+jerry_dead = pygame.image.load("jerry_dead.png").convert_alpha
+tom_cat = pygame.image.load("tom_cat.png").convert_alpha
+mousetrap = pygame.image.load("mousetrap.png").convert_alpha
+
+#Initialize jerry position
+jerry_position = jerry_alive.get_rect(center = (50, 210)) # sets the initial position of Jerry
+
+mousetrap_obstacle = [] #empty list that will later store the obstacles
 
 
 def tap(x, y):
     """Move bird up in response to screen tap.""" #GU: 
     up = vector(0, 30)
-    bird.move(up)
+    jerry_alive.move(up)
 
 
 def inside(point): #GF: Defines the function "inside" that checks if a point is within the screen boundaries.
