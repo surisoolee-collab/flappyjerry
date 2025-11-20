@@ -6,7 +6,7 @@
 
 import pygame # imports the pygame module for game development
 pygame.init() # initializes all imported pygame modules
-from sys import exit # imports th exit function from the sys module
+from sys import exit # imports the exit function from the sys module
 from random import * # Imports all functions, classes, or variables from the random module
 
 screen = pygame.display.set_mode((420, 420)) # set up display window of size 420x420 pixels
