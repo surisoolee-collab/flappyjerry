@@ -64,7 +64,7 @@ def draw(alive): #GF: This function is responsible for rendering the game object
 
 def move(): #SYL: defines main game loop. Updates positions of bird and balls, checks for losing conditions, and redraws the screen.
     """Update object positions."""
-    jerry.y -= 5 #SYL: makes the bird move down by 5 units in the y-coordinate 
+    jerry_position.y -= 5 #SYL: makes the bird move down by 5 units in the y-coordinate 
 
     for ball in balls: #SYL: moves every ball by 3 units left each time the function is called
         ball.x -= 3
