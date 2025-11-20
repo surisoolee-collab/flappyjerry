@@ -7,7 +7,7 @@
 from random import * #GF: Imports all functions, classes, or variables from the random module
 from turtle import * #GF: Imports all turtle functions used to draw graphics on the screen. Such as movement/positioning and shapes
 
-from freegames import vector #SYL: Imports vector from the module freegames, to run the game freegames must be installed
+from freegames import vector #SYL: Imports the class vector from the module freegames, to run the game freegames must be installed
 
 bird = vector(0, 0) #SYL: Initializes bird position at the center of the screen at position (0,0)
 balls = [] #GU: creates an empty list that will later store the obstacles (balls) 
@@ -42,21 +42,20 @@ def draw(alive): #GF: This function is responsible for rendering the game object
     update()
 
 
-def move(): #SYL:
+def move(): #SYL: Main game loop. Updates positions of bird and balls, checks for losing conditions, and redraws the screen.
     """Update object positions."""
-    bird.y -= 5
+    bird.y -= 5 #SYL: makes the bird move down by 5 units in the y-coordinate 
 
-    for ball in balls:
+    for ball in balls: #SYL: moves every ball by 3 units left each time the function is called
         ball.x -= 3
 
-    if randrange(10) == 0:
-        y = randrange(-199, 199)
-        ball = vector(199, y)
-        balls.append(ball)
+    if randrange(10) == 0: #SYL: randrange method will return number between 0 to 9 and if it returns 0 (10% channce), a new ball will be created
+        y = randrange(-199, 199) #SYL: a random y-coordinate for the new ball (between -199 and 199)
+        ball = vector(199, y) #SYL: creates a new ball at the far right (x=199) with the random y-coordinate
+        balls.append(ball) #SYL: adds the new ball to the list balls
 
-    while len(balls) > 0 and not inside(balls[0]):
-        balls.pop(0)
-
+    while len(balls) > 0 and not inside(balls[0]): #SYl: while there are balls in the list and the first ball is not inside the screen
+        balls.pop(0) #SYL: remove and return the first ball from the list
     if not inside(bird): #GU:
         draw(False)
         return
@@ -70,10 +69,10 @@ def move(): #SYL:
     ontimer(move, 50)
 
 
-setup(420, 420, 370, 0) #SYL:
-hideturtle()
-up()
+setup(420, 420, 370, 0) #SYL: creates a 420 by 420 pixel window, at 370 pixels left and 0 pixels from the top of the screen
+hideturtle() #SYL: hides the default turtle cursor
+up() #SYL: lifts the turtle pen up so the turtle moves without drawing lines
 tracer(False)
-onscreenclick(tap)
-move()
-done()
+onscreenclick(tap) #SYL: calls the tap function whenever the screen is clicked
+move() #SYL: starts the game by calling the move function
+done() #SYL: when the program is finished waits for the user to close the window
