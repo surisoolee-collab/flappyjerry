@@ -5,7 +5,7 @@
 """
 
 import pygame # imports the pygame module for game development
-from sys import * # imports all functions and variables from the sys module
+from sys import exit # imports th exit function from the sys module
 from random import * # Imports all functions, classes, or variables from the random module
 import font # imports font module for text rendering
 
