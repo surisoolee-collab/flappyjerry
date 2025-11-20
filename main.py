@@ -82,10 +82,7 @@ def move(): #SYL: defines main game loop. Updates positions of bird and balls, c
     ontimer(move, 50) #GU: When the bird is safe the game will continue by updating the game screen every 50 milliseconds(creates the illusion that the bird is moving horizontally.)
 
 
-setup(420, 420, 370, 0) #SYL: creates a 420 by 420 pixel window, at 370 pixels left and 0 pixels from the top of the screen
-hideturtle() #SYL: hides the default turtle cursor
-up() #SYL: lifts the turtle pen up so the turtle moves without drawing lines
-tracer(False)
+
 onscreenclick(tap) #SYL: calls the tap function whenever the screen is clicked
 move() #SYL: starts the game by calling the move function
 done() #SYL: when the program is finished waits for the user to close the window
