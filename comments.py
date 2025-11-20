@@ -13,10 +13,10 @@ bird = vector(0, 0) #SYL: Initializes bird position at the center of the screen 
 balls = [] #GU: creates an empty list that will later store the obstacles (balls) 
 
 
-def tap(x, y):
-    """Move bird up in response to screen tap.""" #GU: 
-    up = vector(0, 30)
-    bird.move(up)
+def tap(x, y): #GU: Defines the function "tap" which is called anytime the player taps the screen, x and y are the position.
+    """Move bird up in response to screen tap.""" 
+    up = vector(0, 30) #GU: For each tap on the screen the bird will move 30 units up and 0 units horizontally.
+    bird.move(up) #GU: Tells the bird to move 30 units up per each tap
 
 
 def inside(point): #GF: Defines the function "inside" that checks if a point is within the screen boundaries.
@@ -56,17 +56,17 @@ def move(): #SYL: Main game loop. Updates positions of bird and balls, checks fo
 
     while len(balls) > 0 and not inside(balls[0]): #SYl: while there are balls in the list and the first ball is not inside the screen
         balls.pop(0) #SYL: remove and return the first ball from the list
-    if not inside(bird): #GU:
-        draw(False)
+    if not inside(bird): #GU: Checks whether the bird is still on the game screen
+        draw(False) #GU: If bird is outside of the game screen then function will return False and the game will end.
         return
 
-    for ball in balls:
-        if abs(ball - bird) < 15:
-            draw(False)
+    for ball in balls: #GU: Checks every ball in this list of random balls(obstacles)
+        if abs(ball - bird) < 15: #GU: Calculates the absolute value of the distance betweent the bird and a ball, and checks if the distance is less than 15 units
+            draw(False) #GU: If distance is less than 15 units then function will return False and game will end.
             return
 
-    draw(True)
-    ontimer(move, 50)
+    draw(True) #GU: If distance is more than 15 units then it tells the game that the bird has not collided into anything
+    ontimer(move, 50) #GU: When the bird is safe the game will continue by updating the game screen every 50 milliseconds(creates the illusion that the bird is moving horizontally.)
 
 
 setup(420, 420, 370, 0) #SYL: creates a 420 by 420 pixel window, at 370 pixels left and 0 pixels from the top of the screen
