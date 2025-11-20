@@ -4,8 +4,8 @@
 """Flappy, game inspired by Flappy Bird.
 """
 
+import pygame #GF: imports the pygame module for game development
 from random import * #GF: Imports all functions, classes, or variables from the random module
-from turtle import * #GF: Imports all turtle functions used to draw graphics on the screen. Such as movement/positioning and shapes
 
 from freegames import vector #SYL: Imports the class vector from the module freegames, to run the game freegames must be installed
 
