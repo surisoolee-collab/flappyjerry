@@ -9,33 +9,40 @@ pygame.init() # initializes all imported pygame modules
 from sys import exit # imports the exit function from the sys module
 from random import * # Imports all functions, classes, or variables from the random module
 
-screen = pygame.display.set_mode((420, 420)) # set up display window of size 420x420 pixels
+screen = pygame.display.set_mode((800, 600)) # set up display window of size 420x420 pixels
 pygame.display.set_caption("Flappy Jerry") # sets the window title to "Flappy Jerry"
 
 clock = pygame.time.Clock() # creates a Clock object to help track time
 
 #Import images
-jerry_alive = pygame.image.load("jerry_alive.png").convert_alpha
-jerry_dead = pygame.image.load("jerry_dead.png").convert_alpha
-tom_cat = pygame.image.load("tom_cat.png").convert_alpha
+jerry_alive = pygame.image.load("jerry.png").convert_alpha
+deadjerry = pygame.image.load("deadjerry.png").convert_alpha
+cat = pygame.image.load("cat.png").convert_alpha
 mousetrap = pygame.image.load("mousetrap.png").convert_alpha
+cheese = pygame.image.load("cheese.png").convert_alpha
+background = pygame.image.load("background.png").convert_alpha
 
 #Initialize jerry position
-jerry_position = jerry_alive.get_rect(center = (50, 210)) # sets the initial position of Jerry
+jerry_x = 400
+jerry_y = 300
+jerry_position = jerry_alive.get_rect(center = (jerry_x, jerry_y)) # sets the initial position of Jerry
+screen.blit(jerry_alive, jerry_position)
+pygame.display.update()  # update the display
 
 mousetrap_obstacle = [] #empty list that will later store the obstacles
 
 
-def tap(x, y):
-    """Move bird up in response to screen tap.""" #GU: 
-    up = vector(0, 30)
-    jerry_alive.move(up)
-
+def spacebar(): 
+    """
+    Move jerry up in response to clicking spacebar.
+    """
+    jerry_position.y -= 15 
+      # draw Jerry
+    
 
 def inside(point): #GF: Defines the function "inside" that checks if a point is within the screen boundaries.
     """Return True if point on screen."""
-    return -200 < point.x < 200 and -200 < point.y < 200 #GF: If True, the point's x and y coordinates are within the screen boundaries (between -200 and 200).
-
+    return 0 < point.x < 800 and 0 < point.y < 600 #GF: If True, the point's x and y coordinates are within the screen boundaries (between -200 and 200).
 
 def draw(alive): #GF: This function is responsible for rendering the game objects on the screen.
     """Draw screen objects."""
@@ -57,7 +64,7 @@ def draw(alive): #GF: This function is responsible for rendering the game object
 
 def move(): #SYL: defines main game loop. Updates positions of bird and balls, checks for losing conditions, and redraws the screen.
     """Update object positions."""
-    bird.y -= 5 #SYL: makes the bird move down by 5 units in the y-coordinate 
+    jerry_position.y -= 5 #SYL: makes the bird move down by 5 units in the y-coordinate 
 
     for ball in balls: #SYL: moves every ball by 3 units left each time the function is called
         ball.x -= 3
@@ -83,6 +90,10 @@ def move(): #SYL: defines main game loop. Updates positions of bird and balls, c
 
 
 
-onscreenclick(tap) #SYL: calls the tap function whenever the screen is clicked
+keys = pygame.key.get_pressed()
+if keys[pygame.K_SPACE]:
+    spacebar() # calls the spacebar function to move Jerry up
+
+spacebar() #SYL: calls the spacebar function whenever the screen is clicked
 move() #SYL: starts the game by calling the move function
 done() #SYL: when the program is finished waits for the user to close the window
