@@ -71,15 +71,6 @@ def move(): #SYL: defines main game loop. Updates positions of bird and balls, c
     draw(True)
     ontimer(move, 50)
 
-import pygame, sys  #GF: imports pygame and sys (pygame is used for creating games and multimedia applications, sys provides access to system-specific parameters and functions, such as exiting the program)
-import font #GF: imports font module for text rendering
-
-pygame.init() #GF: Initializes all imported pygame modules
-
-screen = pygame.display.set_mode((420, 420)) #GF: Sets the display mode to a window of size 420x420 pixels
-pygame.display.set_caption("Flappy Jerry") #GF: Sets the title of the window to "Flappy Jerry"
-
-
 
 setup(420, 420, 370, 0) #SYL: creates a 420 by 420 pixel window, at 370 pixels left and 0 pixels from the top of the screen
 hideturtle() #SYL: hides the default turtle cursor
