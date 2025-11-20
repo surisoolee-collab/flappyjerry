@@ -7,10 +7,12 @@
 import pygame # imports the pygame module for game development
 from sys import exit # imports th exit function from the sys module
 from random import * # Imports all functions, classes, or variables from the random module
-import font # imports font module for text rendering
 
+pygame.display.set_caption("Flappy Jerry") # sets the window title to "Flappy Jerry"
+jerry_alive = pygame.image.load("jerry_alive.png").convert_alpha # loads the image of Jerry when he is alive
+jerry_dead = pygame.image.load("jerry_dead.png").convert_alpha # loads the image of Jerry when he is dead
 
-bird = vector(0, 0) #SYL: Initializes bird position at the center of the screen at position (0,0)
+jerry_alive = vector(0, 0) #SYL: Initializes bird position at the center of the screen at position (0,0)
 balls = [] #GU: creates an empty list that will later store the obstacles (balls) 
 
 
