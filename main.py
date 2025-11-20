@@ -4,10 +4,11 @@
 """Flappy, game inspired by Flappy Bird.
 """
 
-import pygame #GF: imports the pygame module for game development
-from random import * #GF: Imports all functions, classes, or variables from the random module
+import pygame # imports the pygame module for game development
+from sys import * # imports all functions and variables from the sys module
+from random import * # Imports all functions, classes, or variables from the random module
+import font # imports font module for text rendering
 
-from freegames import vector #SYL: Imports the class vector from the module freegames, to run the game freegames must be installed
 
 bird = vector(0, 0) #SYL: Initializes bird position at the center of the screen at position (0,0)
 balls = [] #GU: creates an empty list that will later store the obstacles (balls) 
