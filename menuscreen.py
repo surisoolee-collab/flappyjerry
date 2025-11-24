@@ -9,7 +9,7 @@ pygame.display.set_caption("Flappy Jerry")  # sets the window title to "Flappy J
 #define variables
 game_paused = False
 
-font = pygame.font.SysFont("arielblack", 70)
+font = pygame.font.SysFont(None, 70)
 text_color = (255, 255, 255)
 
 def draw_text(text, font, color, surface, x, y):

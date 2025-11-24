@@ -2,12 +2,17 @@ import pygame
 
 #button class
 class Button():
-    def __init__(self, x, y, image):
+    def __init__(self, x, y, image): # x and y are the top-left coordinates where the button will be placed
         width = image.get_width()
         height = image.get_height()
-        self.image = image
-        self.rect = self.image.get_rect()
-        self.rect.topleft = (x, y)
+        self.image = image # store the button image
+        self.rect = self.image.get_rect() # get the rectangle object for positioning
+        self.rect.topleft = (x, y) # set the top-left position of the button
+        self.clicked = False
+    
+    def draw(self, surface): # draws the button on the given surface
+         surface.blit(self.image, (self.rect.x, self.rect.y))
+         return self.is_clicked(pygame.mouse.get_pos())
 
     def draw(self, surface):
         surface.blit(self.image, (self.rect.x, self.rect.y))
