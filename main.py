@@ -5,9 +5,10 @@
 """
 
 import pygame # imports the pygame module for game development
-pygame.init() # initializes all imported pygame modules
 from sys import exit # imports the exit function from the sys module
 from random import * # Imports all functions, classes, or variables from the random module
+
+pygame.init() # initializes all imported pygame modules
 
 screen = pygame.display.set_mode((800, 600)) # set up display window of size 420x420 pixels
 pygame.display.set_caption("Flappy Jerry") # sets the window title to "Flappy Jerry"
@@ -25,8 +26,8 @@ background = pygame.image.load("background.png").convert_alpha
 #Initialize jerry position
 jerry_x = 400
 jerry_y = 300
-jerry_position = jerry_alive.get_rect(center = (jerry_x, jerry_y)) # sets the initial position of Jerry
-screen.blit(jerry_alive, jerry_position)
+jerry = jerry_alive.get_rect(center = (jerry_x, jerry_y)) # sets the initial position of Jerry
+screen.blit(jerry_alive, jerry)
 pygame.display.update()  # update the display
 
 mousetrap_obstacle = [] #empty list that will later store the obstacles
@@ -36,8 +37,8 @@ def spacebar():
     """
     Move jerry up in response to clicking spacebar.
     """
-    jerry_position.y -= 15 
-      # draw Jerry
+    jerry.y -= 15 
+    screen.blit(jerry_alive, jerry)
     
 
 def inside(point): #GF: Defines the function "inside" that checks if a point is within the screen boundaries.
@@ -46,14 +47,14 @@ def inside(point): #GF: Defines the function "inside" that checks if a point is 
 
 def draw(alive): #GF: This function is responsible for rendering the game objects on the screen.
     """Draw screen objects."""
-    clear() #GF: This function clears the screen to prepare for new drawings.
+    pygame.display.update() #GF: This function clears the screen to prepare for new drawings.
 
-    goto(bird.x, bird.y) #GF: Moves the turtle to the bird's current position.
+    goto(jerry.x, jerry.y) #GF: Moves the turtle to the bird's current position.
 
     if alive: #GF: If the bird is alive, it draws a green dot. Otherwise, it draws a red dot. The dot is 10 pixels wide.
-        dot(10, 'green')
+        jerry
     else:
-        dot(10, 'red')
+        jerry = deadjerry.getrect(center = (jerry_x, jerry_y))
 
     for ball in balls: #GF: Draws each ball (obstacle) on the screen at the given x,y coordinates as a black dot that is 20 pixels wide.
         goto(ball.x, ball.y)
@@ -64,18 +65,18 @@ def draw(alive): #GF: This function is responsible for rendering the game object
 
 def move(): #SYL: defines main game loop. Updates positions of bird and balls, checks for losing conditions, and redraws the screen.
     """Update object positions."""
-    jerry_position.y -= 5 #SYL: makes the bird move down by 5 units in the y-coordinate 
+    jerry_position.y -= 10 #SYL: makes the bird move down by 5 units in the y-coordinate 
 
-    for ball in balls: #SYL: moves every ball by 3 units left each time the function is called
-        ball.x -= 3
+    for ball in mousetrap_obstacle: #SYL: moves every ball by 3 units left each time the function is called
+        ball.x -= 8
 
     if randrange(10) == 0: #SYL: randrange method will return number between 0 to 9 and if it returns 0 (10% channce), a new ball will be created
-        y = randrange(-199, 199) #SYL: a random y-coordinate for the new ball (between -199 and 199)
-        ball = vector(199, y) #SYL: creates a new ball at the far right (x=199) with the random y-coordinate
-        balls.append(ball) #SYL: adds the new ball to the list balls
+        y = randrange(10,550) #SYL: a random y-coordinate for the new ball (between -199 and 199)
+        ball = vector(799, y) #SYL: creates a new ball at the far right (x=199) with the random y-coordinate
+        mousetrap_obstacle.append(ball) #SYL: adds the new ball to the list balls
 
-    while len(balls) > 0 and not inside(balls[0]): #SYl: while there are balls in the list and the first ball is not inside the screen
-        balls.pop(0) #SYL: remove and return the first ball from the list
+    while len(mousetrap_obstacle) > 0 and not inside(mousetrap_obstacle[0]): #SYl: while there are balls in the list and the first ball is not inside the screen
+        mousetrap_obstacle[1:] #SYL: remove and return the first ball from the list
     if not inside(bird): #GU: Checks whether the bird is still on the game screen
         draw(False) #GU: If bird is outside of the game screen then function will return False and the game will end.
         return
