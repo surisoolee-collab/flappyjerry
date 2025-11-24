@@ -1,9 +1,3 @@
-# SYL: Soo Young Lee
-# GF: Gabriella Ferry
-# GU: Gulyar Udun
-"""Flappy Jerry, game inspired by Flappy Bird.
-"""
- 
 import pygame # imports the pygame module for game development
 from sys import exit # imports the exit function from the sys module
 from random import * # Imports all functions, classes, or variables from the random module
