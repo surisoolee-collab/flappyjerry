@@ -32,6 +32,6 @@ while run:
                 run = False  # sets run to False to exit the main loop
         if event.type == pygame.QUIT:  # checks if the event type is QUIT (e.g., closing the window)
             pygame.quit()  # uninitializes all pygame modules
-            sys.exit()  # exits the program
+            sys.exit()  # exits the program 
 
     pygame.display.update()  # updates the contents of the entire display
