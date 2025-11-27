@@ -11,22 +11,28 @@ from random import * # Imports all functions, classes, or variables from the ran
 pygame.init() # initializes all imported pygame modules
 
 #Sceen setup
-screen = pygame.display.set_mode((800, 600))
+screen = pygame.display.set_mode((900, 700))
 pygame.display.set_caption("Flappy Jerry") # sets the window title to "Flappy Jerry"
 clock = pygame.time.Clock()
 
 #Import images
-jerry_alive = pygame.image.load("jerry.png").convert_alpha()
-jerry_alive = pygame.transform.scale(jerry_alive, (40, 40))
+jerry_alive = pygame.image.load("jerry2.png").convert_alpha()
+jerry_alive = pygame.transform.scale(jerry_alive, (45, 45))
 
 jerry_dead = pygame.image.load("deadjerry.png").convert_alpha()
-jerry_dead = pygame.transform.scale(jerry_dead, (40, 40))
+jerry_dead = pygame.transform.scale(jerry_dead, (45, 45))
 
 mousetrap = pygame.image.load("mousetrap.png").convert_alpha()
-mousetrap = pygame.transform.scale(mousetrap, (40, 40))
+mousetrap = pygame.transform.scale(mousetrap, (50, 50))
+
+cat = pygame.image.load("cat.png").convert_alpha()
+cat = pygame.transform.scale(cat, (55, 55))
+
+cheese = pygame.image.load("cheese.png").convert_alpha()
+cheese = pygame.transform.scale(cheese, (45, 45))
 
 # Jerry setup
-jerry = jerry_alive.get_rect(center=(400, 300))
+jerry = jerry_alive.get_rect(center=(450, 350))
 
 # Obstacle setup
 mousetrap_obstacle = [] #empty list that will later store the obstacles
@@ -44,7 +50,7 @@ def spawn_mousetrap():
     Spawn a new mousetrap obstacle at a random y-coordinate.
     """
     y = randrange(10, 550) # random y-coordinate for the new mousetrap (between 10 and 550)
-    trap = mousetrap.get_rect(midleft = (800, y)) # creates a new mousetrap at the far right (x=799) with the random y-coordinate
+    trap = mousetrap.get_rect(midleft = (900, y)) # creates a new mousetrap at the far right (x=799) with the random y-coordinate
     mousetrap_obstacle.append(trap) # adds the new mousetrap to the list mousetrap_obstacle
     
 
@@ -53,7 +59,7 @@ def check_dead(point):
     Return True if dead.
     """
     #Hit top or bottom of screen
-    if point.top <= 0 or point.bottom >= 600:
+    if point.top <= 0 or point.bottom >= 700:
         return True
     
     #Hit mousetrap
@@ -76,7 +82,7 @@ while running:
 
     jerry.y += gravity # makes Jerry move down by 5 units (gravity)
 
-    if randrange(21) == 0:
+    if randrange(23) == 0: #randrange method will rturn a number between 0 and 21 if it is 0 spawn a mousetrap
         spawn_mousetrap() 
 
     #Move mousetraps
@@ -94,7 +100,7 @@ while running:
     if check_dead(jerry):
         screen.blit(jerry_dead, jerry)
         pygame.display.update()
-        pygame.time.delay(2000)
+        pygame.time.delay(5000)
         pygame.quit()
         exit()
         
