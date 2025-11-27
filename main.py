@@ -16,19 +16,19 @@ pygame.display.set_caption("Flappy Jerry") # sets the window title to "Flappy Je
 clock = pygame.time.Clock()
 
 #Import images
-jerry_alive = pygame.image.load("jerry2.png").convert_alpha()
+jerry_alive = pygame.image.load("images/jerry.png").convert_alpha()
 jerry_alive = pygame.transform.scale(jerry_alive, (45, 45))
 
-jerry_dead = pygame.image.load("deadjerry.png").convert_alpha()
+jerry_dead = pygame.image.load("images/jerry.png").convert_alpha()
 jerry_dead = pygame.transform.scale(jerry_dead, (45, 45))
 
-mousetrap = pygame.image.load("mousetrap.png").convert_alpha()
+mousetrap = pygame.image.load("images/mousetrap.png").convert_alpha()
 mousetrap = pygame.transform.scale(mousetrap, (50, 50))
 
-cat = pygame.image.load("cat.png").convert_alpha()
+cat = pygame.image.load("images/cat.png").convert_alpha()
 cat = pygame.transform.scale(cat, (55, 55))
 
-cheese = pygame.image.load("cheese.png").convert_alpha()
+cheese = pygame.image.load("images/cheese.png").convert_alpha()
 cheese = pygame.transform.scale(cheese, (45, 45))
 
 # Jerry setup
@@ -64,7 +64,7 @@ def check_dead(point):
     
     #Hit mousetrap
     for mousetrap in mousetrap_obstacle:
-        if jerry.colliderect(mousetrap):
+        if jerry.colliderect(mousetrap): # checks for collision between Jerry and the mousetrap
             return True
     else:
         return False
@@ -100,7 +100,7 @@ while running:
     if check_dead(jerry):
         screen.blit(jerry_dead, jerry)
         pygame.display.update()
-        pygame.time.delay(5000)
+        pygame.time.delay(4000)
         pygame.quit()
         exit()
         
