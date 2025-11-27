@@ -19,7 +19,7 @@ clock = pygame.time.Clock()
 jerry_alive = pygame.image.load("images/jerry.png").convert_alpha()
 jerry_alive = pygame.transform.scale(jerry_alive, (45, 45))
 
-jerry_dead = pygame.image.load("images/jerry.png").convert_alpha()
+jerry_dead = pygame.image.load("images/deadjerry.png").convert_alpha()
 jerry_dead = pygame.transform.scale(jerry_dead, (45, 45))
 
 mousetrap = pygame.image.load("images/mousetrap.png").convert_alpha()
