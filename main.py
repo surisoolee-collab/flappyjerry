@@ -31,6 +31,9 @@ cat = pygame.transform.scale(cat, (55, 55))
 cheese = pygame.image.load("images/cheese.png").convert_alpha()
 cheese = pygame.transform.scale(cheese, (45, 45))
 
+background = pygame.image.load("images/background.png").convert_alpha()
+background = pygame.transform.scale(background, (900, 700))
+
 # Jerry setup
 jerry = jerry_alive.get_rect(center=(450, 350))
 
@@ -71,7 +74,7 @@ def check_dead(point):
 
 running = True
 while running:
-    screen.fill((135, 206, 235))  # fills the screen with a sky blue color
+    screen.blit(background, (0, 0)) # fills the screen with a sky blue color
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
