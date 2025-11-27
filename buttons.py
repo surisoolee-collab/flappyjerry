@@ -1,5 +1,9 @@
 import pygame
 
+#button images
+start_button_image = pygame.image.load('start button.png').convert_alpha()
+quit_button_image = pygame.image.load('quit button.png').convert_alpha()
+
 #button class
 class Button():
     def __init__(self, x, y, image): # x and y are the top-left coordinates where the button will be placed
