@@ -1,4 +1,5 @@
 import pygame 
+import sys
 #import buttons later
 
 pygame.init()  # initializes all imported pygame modules
