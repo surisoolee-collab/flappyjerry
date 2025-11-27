@@ -53,7 +53,11 @@ def spawn_mousetrap():
     trap = mousetrap.get_rect(midleft = (900, y)) # creates a new mousetrap at the far right (x=799) with the random y-coordinate
     mousetrap_obstacle.append(trap) # adds the new mousetrap to the list mousetrap_obstacle
     
-
+def spawn_cheeses():
+    y = randrange(10, 550)
+    cheeses = cheese.get_rect(midleft = (900, y))
+    cheese_points.append(cheeses)
+ 
 def check_dead(point): 
     """
     Return True if dead.
