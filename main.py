@@ -11,7 +11,7 @@ import menuscreen # imports the menuscreen module
 
 pygame.init() # initializes all imported pygame modules
 
-menuscreen.run_menu() # runs the menu screen function from the menuscreen module
+menuscreen.run_menu(screen, highscore) # runs the menu screen function from the menuscreen module
 
 #Sceen setup
 screen = pygame.display.set_mode((900, 700))
