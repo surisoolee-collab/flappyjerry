@@ -116,9 +116,9 @@ while running:
         if trap.right < 0: # if the mousetrap has moved off the left side of the screen
             mousetrap_obstacle.remove(trap) # remove and return the first mousetrap from the list
 
-    for cheeses in cheese_points:
-        cheeses.x -= cheese_speed
-        screen.blit(cheeses, cheese)
+    for cheese in cheese_points:
+        cheese.x -= cheese_speed
+        screen.blit(cheese_image, cheese)
 
         if cheeses.right < 0:
             cheese_points.remove(cheeses)
