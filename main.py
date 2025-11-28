@@ -16,28 +16,39 @@ pygame.display.set_caption("Flappy Jerry") # sets the window title to "Flappy Je
 clock = pygame.time.Clock()
 
 #Import images
-jerry_alive = pygame.image.load("jerry2.png").convert_alpha()
+jerry_alive = pygame.image.load("images/jerry.png").convert_alpha()
 jerry_alive = pygame.transform.scale(jerry_alive, (45, 45))
 
-jerry_dead = pygame.image.load("deadjerry.png").convert_alpha()
+jerry_dead = pygame.image.load("images/deadjerry.png").convert_alpha()
 jerry_dead = pygame.transform.scale(jerry_dead, (45, 45))
 
-mousetrap = pygame.image.load("mousetrap.png").convert_alpha()
+mousetrap = pygame.image.load("images/mousetrap.png").convert_alpha()
 mousetrap = pygame.transform.scale(mousetrap, (50, 50))
 
-cat = pygame.image.load("cat.png").convert_alpha()
-cat = pygame.transform.scale(cat, (55, 55))
+tom = pygame.image.load("images/cat.png").convert_alpha()
+tom = pygame.transform.scale(tom, (55, 55))
 
-cheese = pygame.image.load("cheese.png").convert_alpha()
+cheese = pygame.image.load("images/cheese.png").convert_alpha()
 cheese = pygame.transform.scale(cheese, (45, 45))
+
+background = pygame.image.load("images/background.png").convert_alpha()
+background = pygame.transform.scale(background, (900, 700))
 
 # Jerry setup
 jerry = jerry_alive.get_rect(center=(450, 350))
+gravity = 3 # gravity that pulls Jerry down
 
 # Obstacle setup
 mousetrap_obstacle = [] #empty list that will later store the obstacles
 trap_speed = 5 # speed of the mousetrap obstacles
-gravity = 3 # gravity that pulls Jerry down
+
+# Cheese setup
+cheese_points = []  # empty list that will later store the cheeses
+cheese_speed = 5 # speed of the cheese points (same as mousetrap speed)
+
+# Cat setup
+tom_obstacle = [] # empty list that will later store the cat obstacles
+tom_speed = 7 # speed of the cat obstacles
 
 def spacebar(): 
     """
@@ -53,6 +64,15 @@ def spawn_mousetrap():
     trap = mousetrap.get_rect(midleft = (900, y)) # creates a new mousetrap at the far right (x=799) with the random y-coordinate
     mousetrap_obstacle.append(trap) # adds the new mousetrap to the list mousetrap_obstacle
     
+def spawn_cheeses():
+    y = randrange(10, 550) # random y-coordinate for the new cheese (between 10 and 550)
+    cheeses = cheese.get_rect(midleft = (900, y)) # creates a new cheese at the far right (x=799) with the random y-coordinate
+    cheese_points.append(cheeses) # adds the new cheese to the list cheese_points
+
+def spawn_tom():
+    y = randrange(10, 550) # random y-coordinate for the new cat (between 10 and 550)
+    cat = tom.get_rect(midleft = (900, y)) # creates a new cat at the far right (x=799) with the random y-coordinate
+    tom_obstacle.append(cat) # adds the new cat to the list cat_obstacle
 
 def check_dead(point): 
     """
@@ -64,14 +84,14 @@ def check_dead(point):
     
     #Hit mousetrap
     for mousetrap in mousetrap_obstacle:
-        if jerry.colliderect(mousetrap):
+        if jerry.colliderect(mousetrap): # checks for collision between Jerry and the mousetrap
             return True
     else:
         return False
 
 running = True
 while running:
-    screen.fill((135, 206, 235))  # fills the screen with a sky blue color
+    screen.blit(background, (0, 0)) # fills the screen with a sky blue color
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -82,8 +102,11 @@ while running:
 
     jerry.y += gravity # makes Jerry move down by 5 units (gravity)
 
-    if randrange(23) == 0: #randrange method will rturn a number between 0 and 21 if it is 0 spawn a mousetrap
+    if randrange(28) == 0: #randrange method will return a number between 0 and 21 if it is 0 spawn a mousetrap
         spawn_mousetrap() 
+
+    if randrange(32) == 0:
+        spawn_cheeses()
 
     #Move mousetraps
     for trap in mousetrap_obstacle:
@@ -92,6 +115,13 @@ while running:
         
         if trap.right < 0: # if the mousetrap has moved off the left side of the screen
             mousetrap_obstacle.remove(trap) # remove and return the first mousetrap from the list
+
+    for cheeses in cheese_points:
+        cheeses.x -= cheese_speed
+        screen.blit(cheeses, cheese)
+
+        if cheeses.right < 0:
+            cheese_points.remove(cheeses)
         
     #Draw Jerry
     screen.blit(jerry_alive, jerry)
@@ -100,7 +130,7 @@ while running:
     if check_dead(jerry):
         screen.blit(jerry_dead, jerry)
         pygame.display.update()
-        pygame.time.delay(5000)
+        pygame.time.delay(4000)
         pygame.quit()
         exit()
         
