@@ -34,6 +34,8 @@ def run_menu():
             # Title text
             draw_text('Flappy Jerry', font, text_color, SCREEN, 100, 100)
 
+            draw_text(f"High Score: {highscore}", font, text_color, SCREEN, 100, 200)
+
             # START button clicked → return to main game
             if start_button.draw(SCREEN):
                 return # return to main.py to start the game
