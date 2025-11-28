@@ -36,11 +36,19 @@ background = pygame.transform.scale(background, (900, 700))
 
 # Jerry setup
 jerry = jerry_alive.get_rect(center=(450, 350))
+gravity = 3 # gravity that pulls Jerry down
 
 # Obstacle setup
 mousetrap_obstacle = [] #empty list that will later store the obstacles
 trap_speed = 5 # speed of the mousetrap obstacles
-gravity = 3 # gravity that pulls Jerry down
+
+# Cheese setup
+cheese_points = []  # empty list that will later store the cheeses
+cheese_speed = 5 # speed of the cheese points (same as mousetrap speed)
+
+# Cat setup
+cat_obstacle = [] # empty list that will later store the cat obstacles
+cat_speed = 7 # speed of the cat obstacles
 
 def spacebar(): 
     """
@@ -57,10 +65,15 @@ def spawn_mousetrap():
     mousetrap_obstacle.append(trap) # adds the new mousetrap to the list mousetrap_obstacle
     
 def spawn_cheeses():
-    y = randrange(10, 550)
-    cheeses = cheese.get_rect(midleft = (900, y))
-    cheese_points.append(cheeses)
- 
+    y = randrange(10, 550) # random y-coordinate for the new cheese (between 10 and 550)
+    cheeses = cheese.get_rect(midleft = (900, y)) # creates a new cheese at the far right (x=799) with the random y-coordinate
+    cheese_points.append(cheeses) # adds the new cheese to the list cheese_points
+
+def spawn_cats():
+    y = randrange(10, 550) # random y-coordinate for the new cat (between 10 and 550)
+    tom = cat.get_rect(midleft = (900, y)) # creates a new cat at the far right (x=799) with the random y-coordinate
+    cat_obstacle.append(tom) # adds the new cat to the list cat_obstacle
+
 def check_dead(point): 
     """
     Return True if dead.
@@ -89,7 +102,7 @@ while running:
 
     jerry.y += gravity # makes Jerry move down by 5 units (gravity)
 
-    if randrange(23) == 0: #randrange method will rturn a number between 0 and 21 if it is 0 spawn a mousetrap
+    if randrange(28) == 0: #randrange method will return a number between 0 and 21 if it is 0 spawn a mousetrap
         spawn_mousetrap() 
 
     #Move mousetraps
