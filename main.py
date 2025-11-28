@@ -89,6 +89,12 @@ def check_dead(point):
     else:
         return False
 
+    for tom in tom_obstacle:
+        if point.colliderect(tom):
+            return True
+    else:
+        return False
+    
 def get_points(jerry, cheese_points, score):
     """
     Return True if jerry gets cheese.
@@ -101,7 +107,7 @@ def get_points(jerry, cheese_points, score):
     
     return False, score
 
-font = pygame.font.SysFont(None, 50) 
+font = pygame.font.SysFont("Cooper Black", 50) 
 score = 0
 highscore = 0
 
@@ -124,6 +130,9 @@ while running:
     if randrange(45) == 0:
         spawn_cheeses()
 
+    if randrange(60) == 0:
+        spawn_tom()
+
     #Move mousetraps
     for trap in mousetrap_obstacle:
         trap.x -= trap_speed # moves every mousetrap by mousetrap_speed units left each time the loop runs
@@ -131,6 +140,13 @@ while running:
         
         if trap.right < 0: # if the mousetrap has moved off the left side of the screen
             mousetrap_obstacle.remove(trap) # remove and return the first mousetrap from the list
+
+    for cat in tom_obstacle:
+        cat.x -= tom_speed
+        screen.blit(tom, cat)
+
+        if cat.right < 0:
+            tom_obstacle.remove(cat)
 
     for cheese in cheese_points:
         cheese.x -= cheese_speed
