@@ -103,6 +103,7 @@ def get_points(jerry, cheese_points, score):
 
 font = pygame.font.SysFont(None, 50) 
 score = 0
+highscore = 0
 
 running = True
 while running:
@@ -140,9 +141,17 @@ while running:
     
     got_cheese, score = get_points(jerry, cheese_points, score)
 
+    #updates the highscore depending on what the highest score achieved is
+    if score > highscore:
+        highscore = score
+
     score_text = font.render(f"Score: {score}", True, (255, 255, 255))
 
     screen.blit(score_text, (10,10))
+
+    highscore_text = font.render(f"Highscore: {highscore}", True, (255, 255, 0))
+
+    screen.blit(highscore_text, 480, 10)
         
     #Draw Jerry
     dead = check_dead(jerry) # dead = True if Jerry is dead, False otherwise
