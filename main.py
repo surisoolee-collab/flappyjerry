@@ -25,8 +25,8 @@ jerry_dead = pygame.transform.scale(jerry_dead, (45, 45))
 mousetrap = pygame.image.load("images/mousetrap.png").convert_alpha()
 mousetrap = pygame.transform.scale(mousetrap, (50, 50))
 
-cat = pygame.image.load("images/cat.png").convert_alpha()
-cat = pygame.transform.scale(cat, (55, 55))
+tom = pygame.image.load("images/cat.png").convert_alpha()
+tom = pygame.transform.scale(tom, (55, 55))
 
 cheese = pygame.image.load("images/cheese.png").convert_alpha()
 cheese = pygame.transform.scale(cheese, (45, 45))
@@ -47,8 +47,8 @@ cheese_points = []  # empty list that will later store the cheeses
 cheese_speed = 5 # speed of the cheese points (same as mousetrap speed)
 
 # Cat setup
-cat_obstacle = [] # empty list that will later store the cat obstacles
-cat_speed = 7 # speed of the cat obstacles
+tom_obstacle = [] # empty list that will later store the cat obstacles
+tom_speed = 7 # speed of the cat obstacles
 
 def spacebar(): 
     """
@@ -69,10 +69,10 @@ def spawn_cheeses():
     cheeses = cheese.get_rect(midleft = (900, y)) # creates a new cheese at the far right (x=799) with the random y-coordinate
     cheese_points.append(cheeses) # adds the new cheese to the list cheese_points
 
-def spawn_cats():
+def spawn_tom():
     y = randrange(10, 550) # random y-coordinate for the new cat (between 10 and 550)
-    tom = cat.get_rect(midleft = (900, y)) # creates a new cat at the far right (x=799) with the random y-coordinate
-    cat_obstacle.append(tom) # adds the new cat to the list cat_obstacle
+    cat = tom.get_rect(midleft = (900, y)) # creates a new cat at the far right (x=799) with the random y-coordinate
+    tom_obstacle.append(cat) # adds the new cat to the list cat_obstacle
 
 def check_dead(point): 
     """
@@ -106,7 +106,7 @@ while running:
         spawn_mousetrap() 
 
     if randrange(32) == 0:
-        spawn_cheese()
+        spawn_cheeses()
 
     #Move mousetraps
     for trap in mousetrap_obstacle:
