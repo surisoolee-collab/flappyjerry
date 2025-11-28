@@ -4,11 +4,12 @@ import buttons
 
 pygame.init()  # initializes all imported pygame modules
 
-def run_menu():
+def run_menu(SCREEN, highscore):
     SCREEN = pygame.display.set_mode((900, 700))
     pygame.display.set_caption("Flappy Jerry Menu")
 
     font = pygame.font.SysFont("04b 30", 70)
+    font_highscore = pygame.font.SysFont("04b 30", 40)
     text_color = (255, 255, 255)
     game_paused = True
 
@@ -34,7 +35,7 @@ def run_menu():
             # Title text
             draw_text('Flappy Jerry', font, text_color, SCREEN, 100, 100)
 
-            draw_text(f"High Score: {highscore}", font, text_color, SCREEN, 100, 200)
+            draw_text(f"High Score: {highscore}", font_highscore, text_color, SCREEN, 250, 550)
 
             # START button clicked → return to main game
             if start_button.draw(SCREEN):

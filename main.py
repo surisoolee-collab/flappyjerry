@@ -11,12 +11,12 @@ import menuscreen # imports the menuscreen module
 
 pygame.init() # initializes all imported pygame modules
 
-menuscreen.run_menu(screen, highscore) # runs the menu screen function from the menuscreen module
-
 #Sceen setup
 screen = pygame.display.set_mode((900, 700))
 pygame.display.set_caption("Flappy Jerry") # sets the window title to "Flappy Jerry"
 clock = pygame.time.Clock()
+
+menuscreen.run_menu(screen, 0) # runs the menu screen function from the menuscreen module
 
 #Import images
 jerry_alive = pygame.image.load("images/jerry.png").convert_alpha()
@@ -176,7 +176,7 @@ while running:
         screen.blit(jerry_dead, jerry)
         pygame.display.update()
         pygame.time.delay(1000)
-        menuscreen.run_menu() # return to menu screen if Jerry is dead
+        menuscreen.run_menu(screen, highscore) # return to menu screen if Jerry is dead
     else:
         screen.blit(jerry_alive, jerry)
 
