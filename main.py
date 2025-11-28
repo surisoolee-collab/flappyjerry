@@ -54,7 +54,7 @@ def spacebar():
     """
     Move jerry up in response to clicking spacebar.
     """
-    jerry.y -= 30 
+    jerry.y -= 50 
 
 def spawn_mousetrap():
     """
@@ -130,7 +130,7 @@ while running:
     if randrange(45) == 0:
         spawn_cheeses()
 
-    if randrange(60) == 0:
+    if randrange(80) == 0:
         spawn_tom()
 
     #Move mousetraps
