@@ -101,7 +101,7 @@ def get_points(jerry, cheese_points, score):
     
     return False, score
 
-font = pygame.font.SysFont(None, 50) 
+font = pygame.font.SysFont("Cooper Black", 50) 
 score = 0
 highscore = 0
 
