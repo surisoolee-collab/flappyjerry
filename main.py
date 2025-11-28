@@ -151,7 +151,7 @@ while running:
 
     highscore_text = font.render(f"Highscore: {highscore}", True, (255, 255, 0))
 
-    screen.blit(highscore_text, 480, 10)
+    screen.blit(highscore_text, (480, 10))
         
     #Draw Jerry
     dead = check_dead(jerry) # dead = True if Jerry is dead, False otherwise
