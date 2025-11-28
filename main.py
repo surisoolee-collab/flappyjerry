@@ -54,7 +54,7 @@ def spacebar():
     """
     Move jerry up in response to clicking spacebar.
     """
-    jerry.y -= 30 
+    jerry.y -= 50 
 
 def spawn_mousetrap():
     """
