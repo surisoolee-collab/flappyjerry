@@ -28,8 +28,8 @@ mousetrap = pygame.transform.scale(mousetrap, (50, 50))
 tom = pygame.image.load("images/cat.png").convert_alpha()
 tom = pygame.transform.scale(tom, (55, 55))
 
-cheese = pygame.image.load("images/cheese.png").convert_alpha()
-cheese = pygame.transform.scale(cheese, (45, 45))
+cheese_image = pygame.image.load("images/cheese.png").convert_alpha()
+cheese_image = pygame.transform.scale(cheese_image, (45, 45))
 
 background = pygame.image.load("images/background.png").convert_alpha()
 background = pygame.transform.scale(background, (900, 700))
@@ -66,8 +66,8 @@ def spawn_mousetrap():
     
 def spawn_cheeses():
     y = randrange(10, 650) # random y-coordinate for the new cheese (between 10 and 550)
-    cheeses = cheese.get_rect(midleft = (900, y)) # creates a new cheese at the far right (x=799) with the random y-coordinate
-    cheese_points.append(cheeses) # adds the new cheese to the list cheese_points
+    cheese = cheese_image.get_rect(midleft = (900, y)) # creates a new cheese at the far right (x=799) with the random y-coordinate
+    cheese_points.append(cheese) # adds the new cheese to the list cheese_points
 
 def spawn_tom():
     y = randrange(30, 630) # random y-coordinate for the new cat (between 10 and 550)
