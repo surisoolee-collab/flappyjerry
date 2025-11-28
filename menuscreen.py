@@ -8,8 +8,8 @@ def run_menu(SCREEN, highscore):
     SCREEN = pygame.display.set_mode((900, 700))
     pygame.display.set_caption("Flappy Jerry Menu")
 
-    font = pygame.font.SysFont("04b 30", 70)
-    font_highscore = pygame.font.SysFont("04b 30", 40)
+    font = pygame.font.Font("04b_30__.TTF", 70)
+    font_highscore = pygame.font.Font("04b_30__.TTF", 40)
     text_color = (255, 255, 255)
     game_paused = True
 
