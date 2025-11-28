@@ -55,7 +55,7 @@ def play_game(highscore):
 
     # Cat setup
     tom_obstacle = [] # empty list that will later store the cat obstacles
-    tom_speed = 7 # speed of the cat obstacles
+    tom_speed = 8 # speed of the cat obstacles
 
     def spacebar(): 
         """
@@ -72,11 +72,17 @@ def play_game(highscore):
         mousetrap_obstacle.append(trap) # adds the new mousetrap to the list mousetrap_obstacle
     
     def spawn_cheeses():
+        """
+        Spawn a cheese at a random y-coordinate.
+        """
         y = randrange(10, 650) # random y-coordinate for the new cheese (between 10 and 550)
         cheese = cheese_image.get_rect(midleft = (900, y)) # creates a new cheese at the far right (x=799) with the random y-coordinate
         cheese_points.append(cheese) # adds the new cheese to the list cheese_points
 
     def spawn_tom():
+        """
+        Spawn a cat obstacle at a random y-coordinate.
+        """
         y = randrange(30, 630) # random y-coordinate for the new cat (between 10 and 550)
         cat = tom.get_rect(midleft = (900, y)) # creates a new cat at the far right (x=799) with the random y-coordinate
         tom_obstacle.append(cat) # adds the new cat to the list cat_obstacle
