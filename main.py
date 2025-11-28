@@ -26,7 +26,7 @@ mousetrap = pygame.image.load("images/mousetrap.png").convert_alpha()
 mousetrap = pygame.transform.scale(mousetrap, (50, 50))
 
 tom = pygame.image.load("images/cat.png").convert_alpha()
-tom = pygame.transform.scale(tom, (55, 55))
+tom = pygame.transform.scale(tom, (60, 60))
 
 cheese_image = pygame.image.load("images/cheese.png").convert_alpha()
 cheese_image = pygame.transform.scale(cheese_image, (45, 45))
