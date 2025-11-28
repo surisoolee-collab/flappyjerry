@@ -2,7 +2,7 @@ import pygame
 
 #button class
 class Button():
-    def __init__(self, x, y, image): # x and y are the top-left coordinates where the button will be placed
+    def __init__(self, x, y, image, scale): # x and y are the top-left coordinates where the button will be placed
         width = image.get_width()
         height = image.get_height()
         self.image = image # store the button image
