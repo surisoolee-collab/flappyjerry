@@ -1,9 +1,5 @@
 import pygame
 
-#button images
-start_button_image = pygame.image.load('start button.png').convert_alpha()
-quit_button_image = pygame.image.load('quit button.png').convert_alpha()
-
 #button class
 class Button():
     def __init__(self, x, y, image): # x and y are the top-left coordinates where the button will be placed
@@ -15,11 +11,15 @@ class Button():
         self.clicked = False
     
     def draw(self, surface): # draws the button on the given surface
-         surface.blit(self.image, (self.rect.x, self.rect.y))
-         return self.is_clicked(pygame.mouse.get_pos())
+        action = False
+        mouse_position = pygame.mouse.get_pos() # get the current mouse position
+        if self.rect.collidepoint(mouse_position): # check if the mouse is over the button
+            if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False: # check if the left mouse button is pressed
+                self.clicked = True
+                action = True
+        if pygame.mouse.get_pressed()[0] == 0: # reset clicked state when mouse button is released
+            self.clicked = False
 
-    def draw(self, surface):
         surface.blit(self.image, (self.rect.x, self.rect.y))
 
-    def is_clicked(self, pos):
-        return self.rect.collidepoint(pos)
+        return action
