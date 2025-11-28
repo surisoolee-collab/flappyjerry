@@ -36,7 +36,7 @@ background = pygame.transform.scale(background, (900, 700))
 
 # Jerry setup
 jerry = jerry_alive.get_rect(center=(450, 350))
-gravity = 3 # gravity that pulls Jerry down
+gravity = 5 # gravity that pulls Jerry down
 
 # Obstacle setup
 mousetrap_obstacle = [] #empty list that will later store the obstacles
