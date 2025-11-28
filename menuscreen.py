@@ -5,8 +5,8 @@ import buttons
 
 pygame.init()  # initializes all imported pygame modules
 
-SCREEN = pygame.display.set_mode((800, 600))  # sets the display window size to 400 pixels wide and 600 pixels high
-pygame.display.set_caption("Flappy Jerry Menu")  # sets the window title to "Flappy Jerry Menu"
+#SCREEN = pygame.display.set_mode((800, 600))  # sets the display window size to 400 pixels wide and 600 pixels high
+#pygame.display.set_caption("Flappy Jerry Menu")  # sets the window title to "Flappy Jerry Menu"
 
 #define variables
 game_paused = True

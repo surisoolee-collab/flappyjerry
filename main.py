@@ -7,6 +7,7 @@
 import pygame # imports the pygame module for game development
 from sys import exit # imports the exit function from the sys module
 from random import * # Imports all functions, classes, or variables from the random module
+#import menuscreen # imports the menuscreen module
 
 pygame.init() # initializes all imported pygame modules
 
