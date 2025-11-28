@@ -175,9 +175,8 @@ while running:
     if dead:
         screen.blit(jerry_dead, jerry)
         pygame.display.update()
-        pygame.time.delay(4000)
-        pygame.quit()
-        exit()
+        pygame.time.delay(1000)
+        menuscreen.run_menu() # return to menu screen if Jerry is dead
     else:
         screen.blit(jerry_alive, jerry)
 
