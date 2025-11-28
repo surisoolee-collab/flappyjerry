@@ -29,11 +29,11 @@ def play_game(highscore):
     jerry_dead = pygame.image.load("images/deadjerry.png").convert_alpha()
     jerry_dead = pygame.transform.scale(jerry_dead, (45, 45))
 
-    mousetrap = pygame.image.load("images/mousetrap.png").convert_alpha()
+    mousetrap = pygame.image.load("images/mousetrap2.png").convert_alpha()
     mousetrap = pygame.transform.scale(mousetrap, (50, 50))
 
     tom = pygame.image.load("images/cat.png").convert_alpha()
-    tom = pygame.transform.scale(tom, (60, 60))
+    tom = pygame.transform.scale(tom, (90, 90))
 
     cheese_image = pygame.image.load("images/cheese.png").convert_alpha()
     cheese_image = pygame.transform.scale(cheese_image, (45, 45))
@@ -140,7 +140,7 @@ def play_game(highscore):
         if randrange(45) == 0:
             spawn_cheeses()
 
-        if randrange(80) == 0:
+        if randrange(100) == 0:
             spawn_tom()
 
         #Move mousetraps
