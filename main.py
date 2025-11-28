@@ -37,7 +37,7 @@ background = pygame.transform.scale(background, (900, 700))
 
 # Jerry setup
 jerry = jerry_alive.get_rect(center=(450, 350))
-gravity = 3 # gravity that pulls Jerry down
+gravity = 5 # gravity that pulls Jerry down
 
 # Obstacle setup
 mousetrap_obstacle = [] #empty list that will later store the obstacles
@@ -87,14 +87,12 @@ def check_dead(point):
     for mousetrap in mousetrap_obstacle:
         if point.colliderect(mousetrap): # checks for collision between Jerry and the mousetrap
             return True
-    else:
-        return False
 
     for tom in tom_obstacle:
         if point.colliderect(tom):
             return True
-    else:
-        return False
+    
+    return False
     
 def get_points(jerry, cheese_points, score):
     """
