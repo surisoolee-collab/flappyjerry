@@ -102,10 +102,10 @@ while running:
 
     jerry.y += gravity # makes Jerry move down by 5 units (gravity)
 
-    if randrange(28) == 0: #randrange method will return a number between 0 and 21 if it is 0 spawn a mousetrap
+    if randrange(25) == 0: #randrange method will return a number between 0 and 21 if it is 0 spawn a mousetrap
         spawn_mousetrap() 
 
-    if randrange(32) == 0:
+    if randrange(45) == 0:
         spawn_cheeses()
 
     #Move mousetraps
