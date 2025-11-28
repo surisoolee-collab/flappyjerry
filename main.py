@@ -89,6 +89,21 @@ def check_dead(point):
     else:
         return False
 
+def get_points(jerry, cheese_points, score):
+    """
+    Return True if jerry gets cheese.
+    """
+    for cheese in cheese_points[:]:
+        if jerry.colliderect(cheese):
+            score += 1
+            cheese_points.remove(cheese)
+            return True, score
+    
+    return False, score
+
+font = pygame.font.SysFont(None, 50) 
+score = 0
+
 running = True
 while running:
     screen.blit(background, (0, 0)) # draws the background image
@@ -119,9 +134,15 @@ while running:
     for cheese in cheese_points:
         cheese.x -= cheese_speed
         screen.blit(cheese_image, cheese)
-
+    
         if cheese.right < 0:
             cheese_points.remove(cheese)
+    
+    got_cheese, score = get_points(jerry, cheese_points, score)
+
+    score_text = font.render(f"Score: {score}", True, (255, 255, 255))
+
+    screen.blit(score_text, (10,10))
         
     #Draw Jerry
     dead = check_dead(jerry) # dead = True if Jerry is dead, False otherwise
