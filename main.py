@@ -130,7 +130,7 @@ while running:
     if randrange(45) == 0:
         spawn_cheeses()
 
-    if randrange(60) == 0:
+    if randrange(80) == 0:
         spawn_tom()
 
     #Move mousetraps
