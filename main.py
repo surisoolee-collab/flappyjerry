@@ -84,7 +84,7 @@ def check_dead(point):
     
     #Hit mousetrap
     for mousetrap in mousetrap_obstacle:
-        if jerry.colliderect(mousetrap): # checks for collision between Jerry and the mousetrap
+        if point.colliderect(mousetrap): # checks for collision between Jerry and the mousetrap
             return True
     else:
         return False
@@ -120,19 +120,19 @@ while running:
         cheese.x -= cheese_speed
         screen.blit(cheese_image, cheese)
 
-        if cheeses.right < 0:
-            cheese_points.remove(cheeses)
+        if cheese.right < 0:
+            cheese_points.remove(cheese)
         
     #Draw Jerry
-    screen.blit(jerry_alive, jerry)
-
-    #Check if jerry is dead
-    if check_dead(jerry):
+    dead = check_dead(jerry) # dead = True if Jerry is dead, False otherwise
+    if dead:
         screen.blit(jerry_dead, jerry)
         pygame.display.update()
         pygame.time.delay(4000)
         pygame.quit()
         exit()
-        
+    else:
+        screen.blit(jerry_alive, jerry)
+
     pygame.display.update()  # updates the contents of the entire display
     clock.tick(30)  # limits the frame rate to 30 frames per second
