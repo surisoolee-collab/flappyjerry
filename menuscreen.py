@@ -16,9 +16,9 @@ def run_menu():
     start_button_image = pygame.image.load('images/start button.png').convert_alpha()
     quit_button_image  = pygame.image.load('images/quit button.png').convert_alpha()
 
-    # button instances (centered better)
-    start_button = buttons.Button(400, 275, start_button_image, 0.3)
-    quit_button  = buttons.Button(400, 425, quit_button_image, 0.3)
+    # button instances
+    start_button = buttons.Button(450, 275, start_button_image, 0.3)
+    quit_button  = buttons.Button(450, 425, quit_button_image, 0.3)
 
     def draw_text(text, font, color, surface, x, y):
         img = font.render(text, True, color)
@@ -32,7 +32,7 @@ def run_menu():
         if game_paused:
 
             # Title text
-            draw_text('Flappy Jerry', font, text_color, SCREEN, 200, 100)
+            draw_text('Flappy Jerry', font, text_color, SCREEN, 100, 100)
 
             # START button clicked → return to main game
             if start_button.draw(SCREEN):
