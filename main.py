@@ -60,17 +60,17 @@ def spawn_mousetrap():
     """
     Spawn a new mousetrap obstacle at a random y-coordinate.
     """
-    y = randrange(10, 550) # random y-coordinate for the new mousetrap (between 10 and 550)
+    y = randrange(10, 650) # random y-coordinate for the new mousetrap (between 10 and 550)
     trap = mousetrap.get_rect(midleft = (900, y)) # creates a new mousetrap at the far right (x=799) with the random y-coordinate
     mousetrap_obstacle.append(trap) # adds the new mousetrap to the list mousetrap_obstacle
     
 def spawn_cheeses():
-    y = randrange(10, 550) # random y-coordinate for the new cheese (between 10 and 550)
+    y = randrange(10, 650) # random y-coordinate for the new cheese (between 10 and 550)
     cheeses = cheese.get_rect(midleft = (900, y)) # creates a new cheese at the far right (x=799) with the random y-coordinate
     cheese_points.append(cheeses) # adds the new cheese to the list cheese_points
 
 def spawn_tom():
-    y = randrange(10, 550) # random y-coordinate for the new cat (between 10 and 550)
+    y = randrange(30, 630) # random y-coordinate for the new cat (between 10 and 550)
     cat = tom.get_rect(midleft = (900, y)) # creates a new cat at the far right (x=799) with the random y-coordinate
     tom_obstacle.append(cat) # adds the new cat to the list cat_obstacle
 
@@ -91,7 +91,7 @@ def check_dead(point):
 
 running = True
 while running:
-    screen.blit(background, (0, 0)) # fills the screen with a sky blue color
+    screen.blit(background, (0, 0)) # draws the background image
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
