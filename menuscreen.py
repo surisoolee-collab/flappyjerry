@@ -13,7 +13,7 @@ def run_menu():
     game_paused = True
 
     # load button images
-    start_button_image = pygame.image.load('start button.png').convert_alpha()
+    start_button_image = pygame.image.load('images/start button.png').convert_alpha()
     quit_button_image  = pygame.image.load('images/quit button.png').convert_alpha()
 
     # button instances (centered better)
