@@ -92,6 +92,9 @@ while running:
     if randrange(23) == 0: #randrange method will rturn a number between 0 and 21 if it is 0 spawn a mousetrap
         spawn_mousetrap() 
 
+    if randrange(32) == 0:
+        spawn_cheese()
+
     #Move mousetraps
     for trap in mousetrap_obstacle:
         trap.x -= trap_speed # moves every mousetrap by mousetrap_speed units left each time the loop runs
@@ -99,6 +102,13 @@ while running:
         
         if trap.right < 0: # if the mousetrap has moved off the left side of the screen
             mousetrap_obstacle.remove(trap) # remove and return the first mousetrap from the list
+
+    for cheeses in cheese_points:
+        cheeses.x -= cheese_speed
+        screen.blit(cheeses, cheese)
+
+        if cheeses.right < 0:
+            cheese_points.remove(cheeses)
         
     #Draw Jerry
     screen.blit(jerry_alive, jerry)
