@@ -184,7 +184,7 @@ def play_game(highscore):
         if dead:
             screen.blit(jerry_dead, jerry)
             pygame.display.update()
-            pygame.time.delay(1000)
+            pygame.time.delay(1200)
             
             return highscore  # exit the game loop and return the highscore to main.py
         else:
