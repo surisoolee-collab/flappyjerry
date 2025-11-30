@@ -57,7 +57,7 @@ def play_game(highscore):
     tom_obstacle = [] # empty list that will later store the cat obstacles
     tom_speed = 8 # speed of the cat obstacles
 
-    def spacebar(): 
+    def spacebar():
         """
         Move jerry up in response to clicking spacebar.
         """
@@ -91,11 +91,11 @@ def play_game(highscore):
         """
         Return True if dead.
         """
-        #Hit top or bottom of screen
+        # Hit top or bottom of screen
         if point.top <= 0 or point.bottom >= 700:
             return True
     
-        #Hit mousetrap
+        # Hit mousetrap
         for mousetrap in mousetrap_obstacle:
             if point.colliderect(mousetrap): # checks for collision between Jerry and the mousetrap
                 return True
@@ -120,7 +120,8 @@ def play_game(highscore):
     font = pygame.font.SysFont("Cooper Black", 50) 
     score = 0
 
-    running = True
+    # Game loop
+    running = True 
     while running:
     
         screen.blit(background, (0, 0)) # draws the background image
@@ -139,13 +140,13 @@ def play_game(highscore):
         if randrange(25) == 0: #randrange method will return a number between 0 and 21 if it is 0 spawn a mousetrap
             spawn_mousetrap() 
 
-        if randrange(45) == 0:
+        if randrange(45) == 0: # randomly spawn cheese 
             spawn_cheeses()
 
-        if randrange(100) == 0:
+        if randrange(100) == 0: # randomly spawn tom 
             spawn_tom()
 
-        #Move mousetraps
+        # Move mousetraps
         for trap in mousetrap_obstacle:
             trap.x -= trap_speed # moves every mousetrap by mousetrap_speed units left each time the loop runs
             screen.blit(mousetrap, trap) # draws the mousetrap on the screen at its current position
@@ -154,39 +155,38 @@ def play_game(highscore):
                 mousetrap_obstacle.remove(trap) # remove and return the first mousetrap from the list
 
         for cat in tom_obstacle:
-            cat.x -= tom_speed
-            screen.blit(tom, cat)
+            cat.x -= tom_speed # moves every cat by tom_speed units left each time the loop runs
+            screen.blit(tom, cat) # draws the cat on the screen at its current position
 
-            if cat.right < 0:
+            if cat.right < 0: # remove the cat if it has moved off the left side of the screen
                 tom_obstacle.remove(cat)
 
-        for cheese in cheese_points:
-            cheese.x -= cheese_speed
-            screen.blit(cheese_image, cheese)
+        for cheese in cheese_points: 
+            cheese.x -= cheese_speed # moves every cheese by cheese_speed units left each time the loop runs
+            screen.blit(cheese_image, cheese) # draws the cheese on the screen at its current position
     
-            if cheese.right < 0:
+            if cheese.right < 0: # reemove the cheese if it has moved off the left side of the screen
                 cheese_points.remove(cheese)
     
         got_cheese, score = get_points(jerry, cheese_points, score)
 
-        #updates the highscore depending on what the highest score achieved is
-        if score > highscore:
+        if score > highscore: # updates the highscore depending on what the highest score achieved is
             highscore = score
 
         score_text = font.render(f"Score: {score}", True, (255, 255, 255))
 
-        screen.blit(score_text, (10,10))
+        screen.blit(score_text, (50,10))
 
         highscore_text = font.render(f"Highscore: {highscore}", True, (255, 255, 0))
 
-        screen.blit(highscore_text, (480, 10))
+        screen.blit(highscore_text, (530, 10))
         
-        #Draw Jerry
+        # Draw Jerry
         dead = check_dead(jerry) # dead = True if Jerry is dead, False otherwise
         if dead:
             screen.blit(jerry_dead, jerry)
             pygame.display.update()
-            pygame.time.delay(1000)
+            pygame.time.delay(1200)
             
             return highscore  # exit the game loop and return the highscore to main.py
         else:
@@ -207,5 +207,5 @@ def main():
         menuscreen.run_menu(pygame.display.set_mode((900, 700)), highscore)  # shows the menu screen with the updated highscore
         highscore = play_game(highscore)  # starts the game and updates the highscore after each game over
 
-if __name__ == "__main__":
+if __name__ == "__main__": # runs the main function if this file is executed directly
     main()
