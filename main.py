@@ -173,11 +173,11 @@ def play_game(highscore):
 
         score_text = font.render(f"Score: {score}", True, (255, 255, 255))
 
-        screen.blit(score_text, (10,10))
+        screen.blit(score_text, (50,10))
 
         highscore_text = font.render(f"Highscore: {highscore}", True, (255, 255, 0))
 
-        screen.blit(highscore_text, (480, 10))
+        screen.blit(highscore_text, (530, 10))
         
         # Draw Jerry
         dead = check_dead(jerry) # dead = True if Jerry is dead, False otherwise
