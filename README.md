@@ -8,3 +8,7 @@ https://www.youtube.com/watch?v=AY9MnQ4x3zk
 https://github.com/m3wright/CHE-120-Dana-Porter-Book-Grab
 https://www.pygame.org/docs/ref/key.html
 https://youtu.be/PzG-fnci8uE?si=yTB18pnaTGA_PtR2
+https://www.youtube.com/watch?v=GMBqjxcKogA
+https://www.youtube.com/watch?v=al_V4OGSvFU
+https://www.youtube.com/watch?v=2iyx8_elcYg
+https://www.youtube.com/watch?v=G8MYGDf_9ho
