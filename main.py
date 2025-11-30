@@ -131,6 +131,8 @@ def play_game(highscore):
                 exit()
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 spacebar() # calls the spacebar function to move Jerry up
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                menuscreen.run_menu(screen, highscore) # pauses the game and runs the menu screen
 
         jerry.y += gravity # makes Jerry move down by 5 units (gravity)
 
