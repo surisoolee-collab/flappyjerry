@@ -29,7 +29,7 @@ def play_game(highscore):
     jerry_dead = pygame.image.load("images/deadjerry.png").convert_alpha()
     jerry_dead = pygame.transform.scale(jerry_dead, (45, 45))
 
-    mousetrap = pygame.image.load("images/mousetrap2.png").convert_alpha()
+    mousetrap = pygame.image.load("images/mousetrap.png").convert_alpha()
     mousetrap = pygame.transform.scale(mousetrap, (50, 50))
 
     tom = pygame.image.load("images/cat.png").convert_alpha()
