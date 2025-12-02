@@ -168,7 +168,7 @@ def play_game(highscore):
             if cheese.right < 0: # reemove the cheese if it has moved off the left side of the screen
                 cheese_points.remove(cheese)
     
-        got cheese, score = get_points(jerry, cheese_points, score)
+        got_cheese, score = get_points(jerry, cheese_points, score)
 
         if score > highscore: # updates the highscore depending on what the highest score achieved is
             highscore = score
